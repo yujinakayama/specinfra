@@ -18,9 +18,9 @@ module Specinfra
           out = `#{cmd}  2>&1`
           [out, $?.dup]
         end
-        if @example
-          @example.metadata[:command] = cmd
-          @example.metadata[:stdout]  = out
+        if example
+          example.metadata[:command] = cmd
+          example.metadata[:stdout]  = out
         end
         CommandResult.new :stdout => out, :exit_status => ret.exitstatus
       end

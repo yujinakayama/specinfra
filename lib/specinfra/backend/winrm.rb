@@ -17,9 +17,9 @@ module Specinfra
         end
         result[:exitcode] = 1 if result[:exitcode] == 0 and !stderr.empty?
 
-        if @example
-          @example.metadata[:command] = script
-          @example.metadata[:stdout]  = stdout + stderr
+        if example
+          example.metadata[:command] = script
+          example.metadata[:stdout]  = stdout + stderr
         end
 
         CommandResult.new :stdout => stdout, :stderr => stderr, :exit_status => result[:exitcode]

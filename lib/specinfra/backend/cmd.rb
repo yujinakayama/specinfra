@@ -13,9 +13,9 @@ module Specinfra
         script = create_script(cmd)
         result = execute_script %Q{#{powershell} -encodedCommand #{encode_script(script)}}
 
-        if @example
-          @example.metadata[:command] = script
-          @example.metadata[:stdout]  = result[:stdout] + result[:stderr]
+        if example
+          example.metadata[:command] = script
+          example.metadata[:stdout]  = result[:stdout] + result[:stderr]
         end
         CommandResult.new :stdout => result[:stdout], :stderr => result[:stderr],
           :exit_status => result[:status]
@@ -42,7 +42,7 @@ module Specinfra
       private
 
       def powershell
-        architecture = @example.metadata[:architecture] || get_config(:architecture)
+        architecture = example.metadata[:architecture] || get_config(:architecture)
 
         case architecture
         when :i386 then x86_powershell

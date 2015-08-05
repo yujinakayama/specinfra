@@ -13,9 +13,9 @@ module Specinfra
           spawn_command(cmd)
         end
 
-        if @example
-          @example.metadata[:command] = cmd
-          @example.metadata[:stdout]  = stdout
+        if example
+          example.metadata[:command] = cmd
+          example.metadata[:stdout]  = stdout
         end
 
         CommandResult.new :stdout => stdout, :stderr => stderr, :exit_status => exit_status

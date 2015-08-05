@@ -11,9 +11,9 @@ module Specinfra
         ret = with_env do
           telnet_exec!(cmd)
         end
-        if @example
-          @example.metadata[:command] = cmd
-          @example.metadata[:stdout]  = ret[:stdout]
+        if example
+          example.metadata[:command] = cmd
+          example.metadata[:stdout]  = ret[:stdout]
         end
 
         CommandResult.new ret

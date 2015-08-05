@@ -39,8 +39,12 @@ module Specinfra
         @inventory ||= HostInventory.new(self)
       end
 
-      def set_example(e)
-        @example = e
+      def example
+        if defined?(RSpec)
+          RSpec.current_example
+        else
+          nil
+        end
       end
 
       def stdout_handler=(block)

@@ -21,9 +21,9 @@ module Specinfra
         ret[:stdout].gsub!(/\r\n/, "\n")
         ret[:stdout].gsub!(/\A\n/, "") if sudo?
 
-        if @example
-          @example.metadata[:command] = cmd
-          @example.metadata[:stdout]  = ret[:stdout]
+        if example
+          example.metadata[:command] = cmd
+          example.metadata[:stdout]  = ret[:stdout]
         end
 
         CommandResult.new ret
